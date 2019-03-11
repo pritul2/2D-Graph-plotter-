@@ -9,12 +9,12 @@ class Draw_Conics
 	int x1,x2,y1,y2,h,k,r,x,y,midx,midy;
 	void axes()
 	{
-		int gd=DETECT,gm,midx,midy;
+		int gd=DETECT,gm,midx,midy;//graphics driver//
 		initgraph(&gd,&gm,"c:\\turboc3\\bgi");
 		midx=(getmaxx()/2)+350;
 		midy=(getmaxy()/2)+350;
 		setcolor(getmaxcolor());
-		line(midx,250,0,250);
+		line(midx,250,0,250); //line(x1,y1,x2,y2)//
 		line(325,0,325,midy);
 	}
 public:
@@ -50,7 +50,7 @@ int main()
 				obj.Circle();
 				break;
 			case 4:
-			       //	obj.ellipse();
+			        obj.ellipse();
 				break;
 			case 5:
 				obj.hyperbola();
@@ -77,7 +77,7 @@ void Draw_Conics::straight_line()
 	cout<<"enter the value of y2:";
 	cin>>y2;
 	axes();
-	line(x1,y1,x2,y2);
+	line(x1,y1,x2,y2); //draws line from (x1,y1) to the (x2,y2)//
 	getch();
 	closegraph();
 }
@@ -94,8 +94,7 @@ void Draw_Conics::Circle()
 	cout<<"enter the radius : ";
 	cin>>r;
 	axes();
-	circle(h+399,k+199,r);
-	//ellipse(x+399,y+199,10,360,xr+60,yr+60);
+	circle(h+399,k+199,r); //circle( x-axis , y-axis , radius)//
 	getch();
 	closegraph();
 }
@@ -108,12 +107,12 @@ void Draw_Conics::parabola()
 	cout<<"enter 1 to draw parabola symmetric about x axis \n"<<
 	"enter 2 to draw parabola symmetric about y axis";
 	cin>>ch;
-	if(ch==1)
+	if(ch==1)//draws parabola symmetric about x axis//
 	{
 		cout<<"enter 1 to draw parabola symmetric about +ve x axis \n"<<
 		"enter 2 to draw parabola symmetric about -ve x axis";
 		cin>>ch;
-		if(ch==1)
+		if(ch==1)//For +ve x axis//
 		{	cout<<"enter the value of "<<endl;
 			cin>>a;
 			axes();
@@ -124,7 +123,7 @@ void Draw_Conics::parabola()
 				putpixel(x+325,250+y,WHITE);
 			}
 		}
-		else
+		else//For -ve x axis//
 		{
 			cout<<"enter the value of x"<<endl;
 			cin>>x;
@@ -132,6 +131,7 @@ void Draw_Conics::parabola()
 			for(x=1;x<300;x++)
 			{
 			       y=2*sqrt(a*x);
+				//parabola is drawn by putting the pixels on the screen//
 			       putpixel(325-x,250-y,WHITE);
 			       putpixel(325-x,250+y,WHITE);
 			}
@@ -139,13 +139,12 @@ void Draw_Conics::parabola()
 		getch();
 		closegraph();
 	}
-	else
+	else//draws parabola symmetric about y axis//
 	{
 		cout<<"enter 1 to draw parabola symmetric about +ve y axis \n"<<
 			"enter 2 to draw parabola symmetric about -ve y axis";
 			cin>>ch;
-
-		if(ch==1)
+		if(ch==1)//For +ve y axis//
 		{
 			cout<<"enter the value of y"<<endl;
 			cin>>y;
@@ -157,7 +156,7 @@ void Draw_Conics::parabola()
 				putpixel(325-x,250-y,WHITE);
 			}
 		}
-		else
+		else//For -ve y axis//
 		{
 			cout<<"enter the value of y"<<endl;
 			cin>>y;
@@ -179,10 +178,6 @@ void Draw_Conics::hyperbola()
 	int gd=DETECT,gm,midx,midy,stangle,endangle,radius;
 	cout<<"enter the value of radius";
 	cin>>radius;
-	/*cout<<"enter the value of stangle ";
-	cin>>stangle;
-	cout<<"enter the value of endangle ";
-	cin>>endangle;      */
 	if(radius>=100||radius<=0)
 	{
 		cout<<"out of range";
@@ -194,21 +189,9 @@ void Draw_Conics::hyperbola()
 	axes();
 	midx=getmaxx()/2;
 	midy=getmaxy()/2+50;
+	//arc is more suitable than putpixel//
 	arc(midx, midy, 45, 135, radius+50);
 	arc( midx, midy-220, 225, 315, radius+50);
 	getch();
 	closegraph();
 }
-/*void
-   midx = getmaxx() / 2;
-   midy = getmaxy() / 2+50;
-   setcolor(getmaxcolor());
-
-   /* draw arc */
-
-
-   /* clean up */
-  /* getch();
-   closegraph();
-   return 0;  */
-
