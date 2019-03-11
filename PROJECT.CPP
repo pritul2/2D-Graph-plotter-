@@ -35,8 +35,7 @@ int main()
 		"enter 1 to draw a line"<<endl<<
 		"enter 2 to parabola"<<endl<<
 		"enter 3 to draw circle"<<endl<<
-		"enter 4 to draw ellipse"<<endl<<
-		"enter 5 to draw hyperbola"<<endl;
+		"enter 4 to draw hyperbola"<<endl;
 		cin>>choice;
 		switch(choice)
 		{
@@ -50,9 +49,6 @@ int main()
 				obj.Circle();
 				break;
 			case 4:
-			        obj.ellipse();
-				break;
-			case 5:
 				obj.hyperbola();
 				break;
 			default:
